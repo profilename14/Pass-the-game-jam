@@ -113,6 +113,8 @@ public class NPCManager : MonoBehaviour
             if (timeRemaining <= 0) {
                 timeRemaining = complaintTimer;
                 ScoreManager.instance.RemoveScore();
+                ScoreManager.instance.RemoveScore();
+                ScoreManager.instance.RemoveScore();
                 ShowMessage("Too Slow");
             }
         }

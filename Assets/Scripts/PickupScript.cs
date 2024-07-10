@@ -17,6 +17,9 @@ public class PickupScript : MonoBehaviour
     private Rigidbody heldObjRB;
     private Outline heldObjOutline;
 
+    [SerializeField] private AudioSource SoundPlayer;
+    [SerializeField] private AudioClip throwSound;
+
     void Update()
     {
         // This is terribly inefficient, feel free to change it :)
@@ -108,5 +111,9 @@ public class PickupScript : MonoBehaviour
         heldObj.transform.parent = null;
         heldObjRB.AddForce(holdPos.transform.forward * throwForce);
         heldObj = null;
+        
+        float pitchMod = Random.Range(-0.25f, 0.25f);
+        SoundPlayer.pitch = 0.5f + pitchMod; // slightly lower than norml pitch
+        SoundPlayer.PlayOneShot(throwSound, 0.3F);
     }
 }
